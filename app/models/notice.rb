@@ -10,7 +10,7 @@ class Notice
 
 
   def assign_problem
-    self.fingerprint = Digest::MD5.hexdigest( self._errors.to_s + self.environment.to_s )
+    self.fingerprint = Digest::MD5.hexdigest( self.traceback.to_s + self.environment.to_s )
     self.problem = Problem.find_or_create_by(fingerprint: self.fingerprint)
   end
 
